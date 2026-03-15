@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Clothing Products</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+    <div align="right">
+        <a href="landing.html">Home</a>
+        <a href="cart.html">Cart</a>
+        <a href="account.html">Account</a>
+    </div>
+
+    <center>
+        <header>
+            <h1>Clothing Collection</h1>
+        </header>
+
+        <main>
+            <div class="products-grid">
+                <article class="product-card">
+                    <img src="7e8fb219505ed05a3baf675067248802.jpg" alt="Spring Autumn Corduroy Jacket Men">
+                    <h3>Spring Autumn Corduroy Jacket Men</h3>
+                    <p class="price">473</p>
+                    <a href="cart.html"><button class="add-to-cart">Add to Cart</button></a>
+                    <a href="detail.html"><button class="add-to-details">Details</button></a>
+                </article>
+
+                <article class="product-card">
+                    <img src="ph-11134207-7rasl-m3umjcz992n356.webp" alt="TALA TUBE MAXI DRESS by Shelovestoshop">
+                    <h3>TALA TUBE MAXI DRESS by Shelovestoshop</h3>
+                    <p class="price">250</p>
+                    <a href="cart.html"><button class="add-to-cart">Add to Cart</button></a>
+                    <a href="gege"><button class="add-to-details">Details</button></a>
+                </article>
+            </div>
+
+            <aside>
+                <h2>Filter Products</h2>
+                <form>
+                    <fieldset>
+                        <legend>Category</legend>
+                        <label>
+                            <input type="checkbox" name="category" value="men"> Men
+                        </label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label>
+                            <input type="checkbox" name="category" value="women"> Women
+                        </label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label>
+                            <input type="checkbox" name="category" value="kids"> Kids
+                        </label>
+                    </fieldset>
+
+                    <br>
+
+                    <fieldset>
+                        <legend>Price Range</legend>
+                        <label>
+                            <input type="radio" name="price" value="low"> Under ₱500
+                        </label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label>
+                            <input type="radio" name="price" value="high"> Above ₱500
+                        </label>
+                    </fieldset>
+                </form>
+            </aside>
+        </main>
+    </center>
+
+    <script>
+        // Make bounce animation work for every product card
+        const buttons = document.querySelectorAll('.add-to-cart');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault(); // stop default link for animation first
+                const card = btn.closest('.product-card');
+                card.classList.add('bounce');
+                setTimeout(() => {
+                    card.classList.remove('bounce');
+                    // After animation ends, go to cart.html
+                    window.location.href = 'cart.html';
+                }, 500); // match bounce animation duration
+            });
+        });
+    </script>
+</body>
+
+</html>
