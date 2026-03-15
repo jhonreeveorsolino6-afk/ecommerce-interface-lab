@@ -1,15 +1,11 @@
-/* Base styles for header */
 header {
     display: flex;
     flex-direction: column;
-    /* mobile default: stack vertically */
     align-items: center;
-    /* center items vertically */
     padding: 15px 20px;
     background-color: #f8f8f8;
     border-bottom: 1px solid #ddd;
     gap: 10px;
-    /* space between logo and nav */
 }
 
 header .logo img {
@@ -23,9 +19,7 @@ header .logo img {
     margin: 0;
     display: flex;
     flex-direction: column;
-    /* mobile: links stacked */
     gap: 10px;
-    /* space between links */
     text-align: center;
 }
 
@@ -35,44 +29,33 @@ header .logo img {
     font-weight: 500;
 }
 
-/* Desktop breakpoint */
 @media (min-width: 768px) {
     header {
         flex-direction: row;
-        /* horizontal layout */
         justify-content: space-between;
-        /* logo left, nav right */
         align-items: center;
-        /* vertical centering */
     }
 
     .nav-links {
         flex-direction: row;
-        /* horizontal links */
         gap: 20px;
-        /* space between links */
     }
 }
 
-/* ================= PRODUCT GRID ================= */
 .products-grid {
     display: grid;
     grid-template-columns: 1fr;
-    /* Mobile: single column */
     gap: 20px;
-    /* consistent spacing */
     margin: 20px auto;
     width: 95%;
 }
 
-/* Tablet: 2 columns */
 @media (min-width: 481px) and (max-width: 768px) {
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Desktop: 4 columns with minmax */
 @media (min-width: 769px) {
     .products-grid {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
