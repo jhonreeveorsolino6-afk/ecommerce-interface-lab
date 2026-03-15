@@ -121,7 +121,6 @@ header .logo img {
     transform: scale(0.97);
 }
 
-/* ================= CENTER LAYOUT ================= */
 center {
     display: flex;
     flex-direction: column;
@@ -129,8 +128,6 @@ center {
     margin-top: 90px;
 }
 
-
-/* ================= SECTIONS ================= */
 section,
 aside,
 article,
@@ -142,7 +139,6 @@ fieldset {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 8px 8px 20px rgba(255, 105, 180, 0.5);
 }
 
-/* ================= PRODUCT CARD ================= */
 article.product-card {
     border: 2px solid var(--accent-color);
     text-align: center;
@@ -169,7 +165,6 @@ article.product-card:hover {
     content: "₱";
 }
 
-/* ================= CART ================= */
 .cart-items {
     list-style: none;
     padding: 0;
@@ -206,7 +201,6 @@ article.product-card:hover {
     border-radius: 3px;
 }
 
-/* ================= CHECKOUT ================= */
 .checkout-container {
     display: flex;
     flex-direction: column;
@@ -240,7 +234,6 @@ article.product-card:hover {
     }
 }
 
-/* ================= HERO ================= */
 .hero {
     display: flex;
     justify-content: center;
@@ -260,7 +253,6 @@ article.product-card:hover {
     margin: 10px 0;
 }
 
-/* ================= TABLE ================= */
 .table-container {
     width: 100%;
     overflow-x: auto;
@@ -279,7 +271,6 @@ td {
     text-align: left;
 }
 
-/* ================= FORM ================= */
 label {
     display: block;
     margin-bottom: 8px;
@@ -301,7 +292,6 @@ input:focus {
     outline: none;
 }
 
-/* ================= BUTTON ================= */
 button,
 input[type="submit"] {
     background-color: var(--accent-color);
@@ -320,7 +310,6 @@ input[type="submit"]:hover {
     animation: pulse 0.6s ease-in-out 1;
 }
 
-/* ================= LIST ITEMS ================= */
 ul {
     list-style: none;
     padding: 0;
@@ -340,7 +329,6 @@ li img {
     border-radius: 5px;
 }
 
-/* ================= PRODUCTS PAGE GRID ================= */
 .products-page {
     display: flex;
     flex-direction: column;
@@ -381,7 +369,6 @@ li img {
     }
 }
 
-/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
 
     section,
@@ -433,7 +420,6 @@ li img {
     }
 }
 
-/* ================= ANIMATIONS ================= */
 @keyframes fadeIn {
     0% {
         opacity: 0;
