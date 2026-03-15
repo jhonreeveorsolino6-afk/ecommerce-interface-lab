@@ -75,19 +75,17 @@
     </center>
 
     <script>
-        // Make bounce animation work for every product card
         const buttons = document.querySelectorAll('.add-to-cart');
 
         buttons.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                e.preventDefault(); // stop default link for animation first
+                e.preventDefault();
                 const card = btn.closest('.product-card');
                 card.classList.add('bounce');
                 setTimeout(() => {
                     card.classList.remove('bounce');
-                    // After animation ends, go to cart.html
                     window.location.href = 'cart.html';
-                }, 500); // match bounce animation duration
+                }, 500);
             });
         });
     </script>
