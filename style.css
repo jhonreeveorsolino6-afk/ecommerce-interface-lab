@@ -280,7 +280,7 @@ input[type="text"],
 input[type="email"],
 input[type="number"],
 input[type="password"] {
-    width: 95%;
+    width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid var(--border-color);

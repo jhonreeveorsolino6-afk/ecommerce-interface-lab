@@ -9,43 +9,66 @@
 
 
 <body>
+<center>
+    <h1>Sign Up</h1>
+    <main>
+        <table border="0">
+            <tr>
+                <td>
+                    <fieldset style="width: 350px; padding: 15px 30px;">
+                        <legend style="font-family: Georgia, serif; font-size: 1.2rem; font-weight: bold; color: #1c1f21; padding: 0 8px;">Create an Account</legend>
 
-    <center>
-        <h1>Sign Up</h1>
+                        <label>Username:</label>
+                        <input type="text" id="username" required style="margin-bottom: 8px;"><br>
 
-        <main>
-            <table border="0">
-                <tr>
-                    <td>
-                        <form action="landing.html" method="get">
+                        <label>Password:</label>
+                        <input type="password" id="password" required style="margin-bottom: 8px;"><br>
 
-                            <fieldset>
+                        <label>Role:</label>
+                        <select id="role" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ddd; margin-bottom: 12px;">
+                            <option value="ROLE_USER">Shopper</option>
+                            <option value="ROLE_ADMIN">Admin</option>
+                        </select><br>
 
-                                <center>
-                                    <h3>Create an Account</h3>
-                                </center>
+                        <center>
+                            <button type="button" onclick="register()">Sign Up</button>
+                        </center>
 
-                                <label>Email:</label>
-                                <input type="email" name="email" required size="30">
+                        <p id="message" style="color:red; margin: 5px 0;"></p>
+                    </fieldset>
+                </td>
+            </tr>
+        </table>
+    </main>
+</center>
 
-                                <label>Password:</label>
-                                <input type="password" name="password" required size="25">
+<script>
+    async function register() {
+        const body = {
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value,
+            role: document.getElementById('role').value
+        };
 
-                                <center>
-                                    <input type="submit" value="Sign Up">
-                                </center>
+        const res = await fetch('http://localhost:8080/api/v1/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+        });
 
-                            </fieldset>
+        const text = await res.text();
+        const msg = document.getElementById('message');
 
-                        </form>
-                    </td>
-                </tr>
-            </table>
-
-        </main>
-
-    </center>
-
+        if (res.ok) {
+            msg.style.color = 'green';
+            msg.textContent = 'Registered! Redirecting...';
+            setTimeout(() => window.location.href = 'landing.html', 1500);
+        } else {
+            msg.style.color = 'red';
+            msg.textContent = text;
+        }
+    }
+</script>
 </body>
 
 </html>
