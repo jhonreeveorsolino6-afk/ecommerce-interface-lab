@@ -4,19 +4,18 @@ import com.stylehub.ecommerce.model.Product;
 import com.stylehub.ecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/api/v1/products")
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
-    // GET /api/products
-    // GET /api/products?category=men
-    // GET /api/products?minPrice=0&maxPrice=500
+    // PUBLIC - anyone can get products
     @GetMapping
     public List<Product> getAll(
             @RequestParam(required = false) String category,
@@ -29,27 +28,30 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-//GET /api/products/1
+    // PUBLIC - anyone can view one product
     @GetMapping("/{id}")
     public Product getOne(@PathVariable Long id) {
         return productService.getById(id);
     }
 
-    // POST /api/products
+    // ADMIN ONLY - only admins can add products
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public Product create(@RequestBody Product product) {
         return productService.save(product);
     }
 
-    // PUT /api/products/1
+    // ADMIN ONLY - only admins can update
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public Product update(@PathVariable Long id,
                           @RequestBody Product product) {
         return productService.update(id, product);
     }
 
-    // DELETE /api/products/1
+    // ADMIN ONLY - only admins can delete
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         productService.delete(id);
         return ResponseEntity.noContent().build();
