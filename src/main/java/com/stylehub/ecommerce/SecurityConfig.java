@@ -14,7 +14,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class SecurityConfig {
 
-    // This bean hashes passwords with BCrypt
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -28,16 +27,15 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/v1/products/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/auth/register").permitAll()
                         .requestMatchers("/login", "/logout").permitAll()
-                        .requestMatchers("/", "/**/*.html", "/**/*.css", "/**/*.js").permitAll()
+                        .requestMatchers("/").permitAll()
                         // MUST BE LOGGED IN
                         .requestMatchers(HttpMethod.POST, "/api/v1/orders").authenticated()
                         // ADMIN ONLY
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/products/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
-                .formLogin(Customizer.withDefaults())  // enables /login
-                .logout(Customizer.withDefaults())     // enables /logout
-                // Disable CSRF for now so Postman/fetch works easily
+                .formLogin(Customizer.withDefaults())
+                .logout(Customizer.withDefaults())
                 .csrf(csrf -> csrf.disable());
         return http.build();
     }
